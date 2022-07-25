@@ -19,4 +19,10 @@ npm run build
 ```
 
 ### Custom config
-Look at `src/constants/config.js` and change the server url, by default is `https://test.epicollect.net`
+add `.env` file with
+```
+REACT_APP_MAPBOX_API_TOKEN=xxxxxxxxxxxxxxx
+PRODUCTION_SERVER_URL=https://five.epicollect.net
+DEVELOPMENT_SERVER_URL=http://localhost/whatever
+```
+###
