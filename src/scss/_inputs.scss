@@ -1,0 +1,62 @@
+.ec5-radio {
+  display: block;
+  text-align: left;
+  input[type=radio] {
+    margin: 8px;
+  }
+}
+
+.ec5-input-attribute {
+  display: block;
+  text-align: left;
+  font-size: 13px;
+}
+
+.rdtPicker {
+  margin: 0 auto 10px;
+  .rdtActive {
+    background-color: $deep-purple !important;
+  }
+  .rdtToday::before {
+    border-bottom: 7px solid $deep-purple !important;
+  }
+}
+
+.ec5-label--group-header {
+  margin-bottom: 15px;
+}
+
+.ec5-photo, .ec5-audio, .ec5-video {
+  width: 100%;
+  border-width: 2px;
+  border-color: rgb(102, 102, 102);
+  border-style: dashed;
+  border-radius: 5px;
+  img {
+    padding: 40px;
+    width: 30%;
+    height: 30%;
+  }
+  .media-file-preview {
+    margin-top: 15px;
+  }
+}
+
+.overlay {
+  cursor: wait;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  span {
+    padding: 16px;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: rgba(255,224,178, 0.9);
+  }
+}

@@ -1,0 +1,40 @@
+.navbar.primary-navbar {
+
+  .navbar-brand {
+    max-width: calc(100vw - 200px);//super hack ;)
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  img.navbar-project-logo {
+    border-radius: 50%;
+    border: 1px solid #673B91 !important;
+    margin: -3px 10px 0 0;
+  }
+  .navbar-project-name {
+    color: #673B91;
+    font-weight: 500;
+
+  }
+  .navbar-nav {
+    margin: 0;
+  }
+  height: 60px !important;
+  padding-left: 0;
+  padding-right: 0;
+  .container-fluid {
+    //padding-left:12px;
+    //padding-right:0;
+  }
+  .navbar-nav > li > a {
+    padding-top: 17px !important;
+    padding-bottom: 14px !important;
+  }
+  .navbar-exit {
+    .navbar-nav > li > a {
+      //margin-right: -15px;
+    }
+  }
+}
+

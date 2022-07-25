@@ -1,0 +1,38 @@
+@media (max-width: 768px) {
+  .navbar-right {
+    margin-right: 15px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .navbar-right {
+    margin-right: 15px !important;
+  }
+}
+
+//hide a few things on really small screens
+@media (max-width: 601px) {
+  .navbar-exit {
+    .navbar-exit__btn-label {
+      display: none;
+    }
+  }
+}
+
+//@media (min-width: 768px) {
+//  .ec5-branch-modal .modal-dialog {
+//    width: 700px;
+//  }
+//}
+//
+//@media (min-width: 1024px) {
+//  .ec5-branch-modal .modal-dialog {
+//    width: 900px;
+//  }
+//}
+//
+//@media (min-width: 1224px) {
+//  .ec5-branch-modal .modal-dialog {
+//    width: 1100px;
+//  }
+//}

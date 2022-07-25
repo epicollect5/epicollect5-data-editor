@@ -1,0 +1,49 @@
+.ec5-progress {
+  .progress {
+    z-index: initial;
+  }
+  .progress-bar {
+    background-color: $light-green;
+  }
+  text-align: center;
+  background-color: #846990;
+  padding: 7px;
+  height: 52px;
+  top: 60px;
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1020;
+  .ec5-progress-bar {
+    margin: 4px auto;
+    width: 40%;
+    height: 30px;
+    background-color: $light-grey;
+    border-radius: 3px;
+  }
+
+  .ec5-progress-text {
+    width: 100%;
+    display: block;
+    position: absolute;
+    color: #333;
+  }
+  .btn-progress {
+    color: #fff;
+    background: none;
+    box-shadow: none;
+  }
+
+  .btn-progress:hover {
+    color: $hot-pink;
+    &:disabled {
+      color: #FFF;
+    }
+  }
+
+  .btn-progress:focus {
+    color: #fff;
+    outline: 0;
+  }
+}
+

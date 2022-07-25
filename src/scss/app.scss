@@ -1,0 +1,212 @@
+@import 'variables';
+@import 'mixins';
+@import 'media-queries';
+@import 'spinner';
+@import 'react-datetime';
+@import 'location';
+@import 'inputs';
+@import 'navbar';
+@import 'progress-bar';
+@import 'loader';
+@import 'typehead';
+
+#toast-container.toast-top-full-width > div {
+  width: 60% !important;
+  height: 56px !important;
+}
+
+//scroll modal body, not page
+.ec5-branch-modal {
+  overflow-y: hidden !important;
+  .modal-body {
+    overflow: auto;
+    height: calc(100vh - 50px);
+  }
+  .navbar-exit {
+    .navbar-nav > li:hover {
+      background: none;
+    }
+  }
+  .modal-dialog {
+    width: 90%;
+    margin: 1% auto;
+  }
+}
+
+html, body {
+  background-color: #fff;
+  height: 80%
+}
+
+#root {
+  height: 100%;
+}
+
+#root > div {
+  height: 100%;
+}
+
+label {
+  font-weight: 400;
+}
+
+.ec5-btn-left {
+  float: left;
+}
+
+.ec5-btn-quit {
+  left: 0;
+  top: 4px;
+  position: absolute;
+}
+
+.ec5-btn-right {
+  float: right;
+}
+
+.ec5-btn-progress {
+  padding-bottom: 0;
+}
+
+.ec5-btn-save {
+  right: 0;
+  top: 4px;
+  position: absolute;
+}
+
+.ec5-btn-margin {
+  margin: 10px;
+}
+
+.ec5-btn-margin-right {
+  margin-right: 10px;
+}
+
+.ec5-label {
+  border-radius: 2px 2px 0 0;
+  width: 100%;
+  background-color: $light-grey;
+  color: #333;
+  padding: 10px;
+  p {
+    word-wrap: break-word;
+    font-weight: 700;
+  }
+}
+
+.input-group {
+  width: 100%;
+}
+
+.btn-group {
+  width: 100%;
+}
+
+.ec5-form-name {
+  position: absolute;
+  top: 120px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.ec5-view {
+  margin-top: 80px;
+}
+
+.ec5-card {
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+  p {
+    margin: 3px;
+  }
+  padding: 0;
+}
+
+.ec5-error {
+  background-color: $red-error;
+  color: #fff;
+  display: block;
+  font-weight: 700;
+  height: 30px;
+  line-height: 30px;
+}
+
+.center-on-page {
+  @include centerOnPage();
+}
+
+.ec5-notice {
+  margin: 15px;
+  display: block;
+  background-color: $light-warning;
+  padding: 5px;
+}
+
+.ec5-table-container {
+  margin: 15px;
+}
+
+.ec5-table-left {
+  text-align: left;
+}
+
+.table {
+  padding: 10px;
+}
+
+.text-center {
+  text-align: center
+}
+
+.hidden {
+  display: none;
+}
+
+.truncate {
+  margin-left: 100px;
+  margin-right: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*
+Inputs
+*/
+
+.ec5-input > div {
+  padding: 15px;
+}
+
+.ec5-checkbox {
+  display: block;
+  text-align: left;
+}
+
+.ec5-location {
+  position: relative
+}
+
+.ec5-branch {
+  margin-top: 130px;
+  min-height: 300px;
+}
+
+.ec5-branch-list {
+  padding-top: 10px;
+}
+
+.ec5-media {
+  width: 50%;
+}
+
+.ec5-completed-entry {
+  padding: 50px
+}
+
+.ec5-confirm-dialog {
+  max-height: 200px;
+}
+input.rbt-input-hint {
+  display: none;
+}

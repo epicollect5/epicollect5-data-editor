@@ -1,0 +1,90 @@
+#map {
+  height: calc(100vh - 500px);
+  width: 100%;
+  min-height: 200px;
+}
+
+.navbar-controls__latlong .form-inline, .navbar-controls__search .form-inline {
+  text-align: left;
+}
+
+.navbar-controls__latlong label, .navbar-controls__search label {
+  font-weight: 700;
+  color: #333;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.btn-search-address, .btn-update-location {
+  margin: 7px;
+}
+
+#toast-container {
+  top: 2px;
+}
+
+
+.help-popup {
+  z-index: 1000;
+}
+
+.locate-me {
+  position: absolute;
+  bottom: 32px;
+  right: 16px;
+  z-index: 1000;
+  button {
+    i {
+      display: block;
+    }
+  }
+}
+
+.ec5-location {
+  .navbar-controls__latlong, .navbar-controls__search {
+    padding-bottom: 10px;
+    border-bottom: 1px solid $light-grey;
+    margin-bottom: 10px;
+  }
+
+  .navbar-controls__latlong {
+    input {
+      max-width: 50%;
+    }
+  }
+  .navbar-controls__search {
+    input {
+      width: 80%;
+    }
+  }
+  .form-group {
+    margin: 0 0 5px 0;
+    padding-right: 0;
+  }
+
+  .leaflet-touch .leaflet-control-layers-toggle {
+    width: 30px;
+    height: 30px;
+  }
+  .leaflet-control-layers-list {
+    text-align: left;
+  }
+}
+
+//fix layout when location is nested on a group within a branch
+.ec5-branch {
+  .ec5-group {
+    .ec5-location {
+      .navbar-controls__latlong {
+        max-width: 90%;
+        input {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.locate-me-icon {
+  margin-right: 5px;
+}
