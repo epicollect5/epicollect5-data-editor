@@ -32,17 +32,16 @@ const config = {
     MEDIA_URL: '/media',
     DATA_VIEWER_URL: '/data',
     DATA_VIEWER_RESTORE: '?restore=1',
-    //https://goo.gl/QS5lV1
-    MAPBOX_API_TOKEN: process.env.REACT_APP_MAPBOX_API_TOKEN,
+
 
     //high contrast maps http://maps.stamen.com
     STAMEN_HIGH_CONTRAST_TILES_PROVIDER: 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png',
     STAMEN_TILES_ATTRIBUTION: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
 
     //MAPBOX outdoors tiles
-    MAPBOX_OUTDOORS_TILES_PROVIDER: 'https://api.mapbox.com/v4/mapbox.outdoors/{z}/{x}/{y}.png?access_token=',
+    MAPBOX_OUTDOORS_TILES_PROVIDER: 'https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/tiles/{z}/{x}/{y}?access_token=' + process.env.REACT_APP_MAPBOX_API_TOKEN,
     //Mapbox satellite imagery
-    MAPBOX_TILES_PROVIDER_SATELLITE: 'https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=',
+    MAPBOX_TILES_PROVIDER_SATELLITE: 'https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + process.env.REACT_APP_MAPBOX_API_TOKEN,
     MAPBOX_TILES_ATTRIBUTION: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
 
     //carto

@@ -94,7 +94,7 @@ class EC5Location extends Component {
         });
 
         //add tiles (MAPBOX OUTDOOR)
-        const mapboxOutdoors = L.tileLayer(config.MAPBOX_OUTDOORS_TILES_PROVIDER + config.MAPBOX_API_TOKEN, {
+        const mapboxOutdoors = L.tileLayer(config.MAPBOX_OUTDOORS_TILES_PROVIDER, {
             attribution: config.MAPBOX_TILES_ATTRIBUTION,
             maxNativeZoom: 20
         });
