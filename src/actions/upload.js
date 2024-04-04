@@ -1,5 +1,4 @@
 import fetch from 'isomorphic-fetch';
-import EC5_LIBRARIES from 'ec5-libraries';
 import config from '../constants/config';
 import parameters from '../constants/parameters';
 import { addErrors, clearAllErrors } from './validator';
@@ -200,13 +199,17 @@ export function uploadEntry(network, project, formRef, formEntry, branchEntries 
                 if (response.status === 200) {
 
                     // Loop and upload branch entries
-
                     const flatBranchEntries = {};
                     // Retrieve a flatter object where the uuids are the keys, rather than nested in ownerInputRefs
                     Object.keys(branchEntries).forEach((ownerInputRef) => {
-                        Object.keys(branchEntries[ownerInputRef]).forEach((uuid) => {
-                            flatBranchEntries[uuid] = branchEntries[ownerInputRef][uuid];
-                        });
+                        //if the ownerInputRef was jumped, skip any branches upload
+                        //this happens when the user adds branches but then go back and forth
+                        //changing jumps (and therefore the conditional logic flow)
+                        if (formEntry.entry.answers[ownerInputRef].was_jumped === false) {
+                            Object.keys(branchEntries[ownerInputRef]).forEach((uuid) => {
+                                flatBranchEntries[uuid] = branchEntries[ownerInputRef][uuid];
+                            });
+                        }
                     });
                     // Obtain an array of just the uuids
                     const branchUuids = Object.keys(flatBranchEntries);
