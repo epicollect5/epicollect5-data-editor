@@ -149,6 +149,15 @@ class Form extends Component {
 
         // If  we have no currentInputRef
         if (!currentInputRef) {
+            let showBranchesToBeDeletedWarning = false;
+            const branches = this.props.project.getFormBranches(this.props.formRef);
+            Object.keys(branches).forEach((ownerInputRef) => {
+                if (this.props.entry.entry.answers[ownerInputRef].was_jumped === true) {
+                    showBranchesToBeDeletedWarning = true;
+                }
+            });
+
+
             // End of form
             return (
                 <div>
@@ -157,7 +166,7 @@ class Form extends Component {
                         saveEntry={this.saveEntry}
                         isEdit={isEdit}
                         entry={entry}
-                        branchEntries={this.props.branchEntries}
+                        showBranchesToBeDeletedWarning={showBranchesToBeDeletedWarning}
                     />
                 </div>
             );
@@ -228,8 +237,7 @@ Form.propTypes = {
     network: React.PropTypes.object,
     isRejected: React.PropTypes.bool,
     error: React.PropTypes.object,
-    statusCodes: React.PropTypes.object,
-    branchEntries: React.PropTypes.object
+    statusCodes: React.PropTypes.object
 };
 
 export default connect(mapStateToProps, {
