@@ -86,7 +86,6 @@ class Form extends Component {
     }
 
     render() {
-
         const {
             formRef, type, isSetUp, entry, currentInputIndex, currentInputRef,
             entryComplete, isRejected, error, project, statusCodes
@@ -125,7 +124,7 @@ class Form extends Component {
         if (entryComplete) {
             return (
                 <div>
-                    { top }
+                    {top}
                     <End
                         isBranch={false}
                         isEdit={isEdit}
@@ -156,6 +155,9 @@ class Form extends Component {
                     {top}
                     <SaveEntry
                         saveEntry={this.saveEntry}
+                        isEdit={isEdit}
+                        entry={entry}
+                        branchEntries={this.props.branchEntries}
                     />
                 </div>
             );
@@ -179,12 +181,14 @@ class Form extends Component {
 
 function mapStateToProps(state) {
 
-    const { formReducer, projectReducer, validatorReducer, generalReducer, entryReducer } = state;
+    const { formReducer, branchReducer, projectReducer, validatorReducer, generalReducer, entryReducer } = state;
     const { type, currentInputRef, currentInputIndex, isSetUp, entryComplete, isSavingAndQuiting } = formReducer;
     const { project } = projectReducer;
     const { isValidating } = validatorReducer;
     const { network, statusCodes } = generalReducer;
     const { entry, isRejected, error } = entryReducer;
+    const { branchEntries } = branchReducer;
+
 
     return {
         type,
@@ -199,7 +203,8 @@ function mapStateToProps(state) {
         network,
         isRejected,
         error,
-        statusCodes
+        statusCodes,
+        branchEntries
     };
 
 }
@@ -223,7 +228,8 @@ Form.propTypes = {
     network: React.PropTypes.object,
     isRejected: React.PropTypes.bool,
     error: React.PropTypes.object,
-    statusCodes: React.PropTypes.object
+    statusCodes: React.PropTypes.object,
+    branchEntries: React.PropTypes.object
 };
 
 export default connect(mapStateToProps, {
