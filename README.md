@@ -31,3 +31,13 @@ if any cors error 'local' see -> https://stackoverflow.com/questions/66534759/co
 
 moreover, add a CORS plugin to avoid any errors
 https://webextension.org/listing/access-control.html?version=0.3.8&type=install
+
+
+## Forking
+
+We provide this software as is, under MIT license, for the benefit and use of the community, however we are unable to
+provide support for its use or modification.
+
+You are not granted rights or licenses to the trademarks of the CGPS or any party, including without limitation the
+Epicollect5 name or logo.
+If you fork the project and publish it, please choose another name.
