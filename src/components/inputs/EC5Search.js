@@ -31,12 +31,18 @@ class EC5Search extends React.Component {
 
         //console.log('Mapping possible answers ' + (Math.round((t1 - t0) * 100) / 100) + ' milliseconds.');
 
-        this.parsedAnswers = this.answer.map((answer) => {
-            return {
-                answer_ref: answer,
-                answer: this.possibleAnswersHashMap[answer]
-            };
-        });
+        this.parsedAnswers = this.answer
+            .filter((answerRef) => {
+                // Skip if not in HashMap
+                return Object.prototype.hasOwnProperty.call(this.possibleAnswersHashMap, answerRef);
+            })
+            .map((answerRef) => {
+                // Map only valid entries to the new format
+                return {
+                    answer_ref: answerRef,
+                    answer: this.possibleAnswersHashMap[answerRef],
+                };
+            });
 
         //bind "this" to methods
         this.handleSearch = this.handleSearch.bind(this);
