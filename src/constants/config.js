@@ -33,24 +33,30 @@ const config = {
     DATA_VIEWER_URL: '/data',
     DATA_VIEWER_RESTORE: '?restore=1',
 
+    //ESRI satellite -> https://wiki.openstreetmap.org/wiki/Esri#Legal_permissions
+    ESRI_TILES_PROVIDER_SATELLITE: 'https://ibasemaps-api.arcgis.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}?token=' + process.env.REACT_APP_ESRI_API_TOKEN,
+    //https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9
+    ESRI_TILES_PROVIDER_ATTRIBUTION: 'Powered by Esri | Esri, Maxar, Earthstar Geographics, and the GIS User Community',
 
-    //high contrast maps http://maps.stamen.com
-    STAMEN_HIGH_CONTRAST_TILES_PROVIDER: 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png',
-    STAMEN_TILES_ATTRIBUTION: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
-
-    //MAPBOX outdoors tiles
-    MAPBOX_OUTDOORS_TILES_PROVIDER: 'https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/tiles/{z}/{x}/{y}?access_token=' + process.env.REACT_APP_MAPBOX_API_TOKEN,
-    //Mapbox satellite imagery
-    MAPBOX_TILES_PROVIDER_SATELLITE: 'https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + process.env.REACT_APP_MAPBOX_API_TOKEN,
-    MAPBOX_TILES_ATTRIBUTION: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
+    OPENTOPO_TILES_PROVIDER: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+    OPENTOPO_TILES_ATTRIBUTION:
+        'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'SRTM | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)',
 
     //carto
     CARTO_LIGHT_TILES_PROVIDER: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
     CARTO_TILES_ATTRIBUTION: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>',
 
+    CARTO_DARK_TILES_PROVIDER:
+        'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png',
+
+    CARTO_DARK_TILES_ATTRIBUTION:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, ' +
+        '&copy; <a href="https://carto.com/attribution">CARTO</a>',
+
     //osm tiles
     OSM_TILES_PROVIDER: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    OSM_TILES_ATTRIBUTION: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+    OSM_TILES_ATTRIBUTION: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
 
     JWT: '',
     FETCH_OPTIONS: {

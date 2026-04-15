@@ -44,13 +44,13 @@ class EC5Location extends Component {
         this.handleLocateMe = this.handleLocateMe.bind(this);
     }
 
-    componentDidMount () {
+    componentDidMount() {
 
         const _locateMe = this.handleLocateMe;
 
         //build locate me control
         L.Control.Locate = L.Control.extend({
-            onAdd () {
+            onAdd() {
                 const btn = L.DomUtil.create('a', 'leaflet-control-locate-me leaflet-bar');
 
                 L.DomEvent.on(btn, 'click', (ev) => {
@@ -60,7 +60,7 @@ class EC5Location extends Component {
 
                 return btn;
             },
-            onRemove () {
+            onRemove() {
                 // Nothing to do here
             }
         });
@@ -71,10 +71,23 @@ class EC5Location extends Component {
         };
 
 
-        this.map = L.map(this.mapNode).setView([0, 0], this.zoom);
+        this.map = L.map(this.mapNode)
+            .setView([0, 0], this.zoom);
 
         //add locate me control to map
-        L.control.Locate({ position: 'topleft' }).addTo(this.map);
+        L.control.Locate({ position: 'topleft' })
+            .addTo(this.map);
+
+        //add satellite images from ESRI
+        const Esri = L.tileLayer(config.ESRI_TILES_PROVIDER_SATELLITE, {
+            attribution: config.ESRI_TILES_PROVIDER_ATTRIBUTION,
+            maxNativeZoom: 17
+        });
+
+        const openTopo = L.tileLayer(config.OPENTOPO_TILES_PROVIDER, {
+            attribution: config.OPENTOPO_TILES_ATTRIBUTION,
+            maxNativeZoom: 17
+        });
 
         //add tiles (CARTO) -> default
         const carto = L.tileLayer(config.CARTO_LIGHT_TILES_PROVIDER, {
@@ -82,20 +95,8 @@ class EC5Location extends Component {
             maxNativeZoom: 20
         });
 
-        const mapboxSatellite = L.tileLayer(config.MAPBOX_TILES_PROVIDER_SATELLITE, {
-            attribution: config.MAPBOX_TILES_ATTRIBUTION,
-            maxNativeZoom: 20
-        });
-
-
-        const stamenHC = L.tileLayer(config.STAMEN_HIGH_CONTRAST_TILES_PROVIDER, {
-            attribution: config.STAMEN_TILES_ATTRIBUTION,
-            maxNativeZoom: 20
-        });
-
-        //add tiles (MAPBOX OUTDOOR)
-        const mapboxOutdoors = L.tileLayer(config.MAPBOX_OUTDOORS_TILES_PROVIDER, {
-            attribution: config.MAPBOX_TILES_ATTRIBUTION,
+        const cartoDark = L.tileLayer(config.CARTO_DARK_TILES_PROVIDER, {
+            attribution: config.CARTO_DARK_TILES_ATTRIBUTION,
             maxNativeZoom: 20
         });
 
@@ -108,21 +109,22 @@ class EC5Location extends Component {
         // layers control https://goo.gl/TNMUoJ
         carto.addTo(this.map); // to set it as the default
         const baseMaps = {
-            Satellite: mapboxSatellite,
-            Terrain: mapboxOutdoors,
-            Contrast: stamenHC,
+            Satellite: Esri,
+            Terrain: openTopo,
             Carto: carto,
+            CartoDark: cartoDark,
             OpenStreetMap: osm
         };
 
         //add layers control
-        L.control.layers(baseMaps).addTo(this.map);
+        L.control.layers(baseMaps)
+            .addTo(this.map);
 
         // If there is already a non empty answer
         this.setUp(this.state.latitude, this.state.longitude, parameters.LOCATION_ACCURACY);
     }
 
-    setUp (latitude, longitude, accuracy, setState = false) {
+    setUp(latitude, longitude, accuracy, setState = false) {
 
         this.marker = L.marker([latitude, longitude], {
             draggable: true
@@ -171,7 +173,7 @@ class EC5Location extends Component {
 
     }
 
-    hideOverlay () {
+    hideOverlay() {
         window.setTimeout(() => {
             this.setState({
                 showOverlay: false
@@ -179,14 +181,15 @@ class EC5Location extends Component {
         }, 500);
     }
 
-    handleLocationError () {
+    handleLocationError() {
 
         /* geolocation IS NOT available */
         this.props.showToastError(strings.location_not_available);
 
         this.marker = L.marker([this.state.latitude, this.state.longitude], {
             draggable: true
-        }).addTo(this.map);
+        })
+            .addTo(this.map);
         this.map.setView([this.state.latitude, this.state.longitude], this.errorZoom);
 
         // Update marker on changing it's position
@@ -208,11 +211,12 @@ class EC5Location extends Component {
         });
     }
 
-    handleChangeLatitude (event) {
+    handleChangeLatitude(event) {
         this.setState({
             // Use Number() to avoid string returns https://goo.gl/7fyCgp
             // Check not null/empty/undefined. If so, always set empty string
-            latitude: event.target.value ? Number(parseFloat(event.target.value).toFixed(6)) : ''
+            latitude: event.target.value ? Number(parseFloat(event.target.value)
+                .toFixed(6)) : ''
         }, () => {
             this.props.onInputChange({
                 latitude: this.state.latitude,
@@ -223,11 +227,12 @@ class EC5Location extends Component {
         });
     }
 
-    handleChangeLongitude (event) {
+    handleChangeLongitude(event) {
         this.setState({
             // Use Number() to avoid string returns https://goo.gl/7fyCgp
             // Check not null/empty/undefined. If so, always set empty string
-            longitude: event.target.value ? Number(parseFloat(event.target.value).toFixed(6)) : ''
+            longitude: event.target.value ? Number(parseFloat(event.target.value)
+                .toFixed(6)) : ''
         }, () => {
             this.props.onInputChange({
                 latitude: this.state.latitude,
@@ -239,7 +244,7 @@ class EC5Location extends Component {
 
     }
 
-    handleUpdateLocation () {
+    handleUpdateLocation() {
 
         const currentLatLong = this.marker.getLatLng();
         const parsedLat = parseFloat(currentLatLong.lat.toFixed(6));
@@ -277,13 +282,13 @@ class EC5Location extends Component {
 
     }
 
-    handleChangeAddress (event) {
+    handleChangeAddress(event) {
         this.setState({
             address: event.target.value
         });
     }
 
-    handleSearchAddress () {
+    handleSearchAddress() {
 
         const server = process.env.NODE_ENV === 'production' ? process.env.PRODUCTION_SERVER_URL : process.env.DEVELOPMENT_SERVER_URL;
         this.setState({
@@ -293,7 +298,8 @@ class EC5Location extends Component {
         fetch(server + window.EC5_LIBRARIES.PARAMETERS.API.ROUTES.OPENCAGE + this.state.address)
             .then((response) => {
                 return response.json();
-            }).then((json) => {
+            })
+            .then((json) => {
                 //see api here https://geocoder.opencagedata.com/api#forward-resp
                 if (json.status.code === 200 && json.results.length > 0) {
                     this.setState({
@@ -312,14 +318,15 @@ class EC5Location extends Component {
                     this.props.showToastError(strings.no_location_found);
                     this.hideOverlay();
                 }
-            }).catch(() => {
+            })
+            .catch(() => {
                 this.props.showToastError(strings.no_location_found);
                 this.hideOverlay();
             });
 
     }
 
-    handleLocateMe () {
+    handleLocateMe() {
 
         if ('geolocation' in navigator) {
 
@@ -354,7 +361,7 @@ class EC5Location extends Component {
 
     }
 
-    render () {
+    render() {
         return (
             <div className="ec5-location">
                 <div
@@ -385,7 +392,7 @@ class EC5Location extends Component {
     }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
 
     const { projectReducer, formReducer } = state;
     const { project } = projectReducer;

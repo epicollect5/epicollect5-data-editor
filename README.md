@@ -1,6 +1,15 @@
 # Epicollect5 Data Editor - using React and Redux 
 Forked from https://github.com/Aiky30/react-webpack-boilerplate
 
+## Requirements
+This project requires an older version of Node.js due to legacy dependencies (like `node-sass`).
+It is recommended to use **Node.js 18**. 
+
+A `.nvmrc` file is included. If you have `nvm` installed, you can run:
+```sh
+nvm use
+```
+
 ## Install
 ```
 npm install (--legacy-peer-deps helps here)
@@ -21,7 +30,6 @@ npm run build
 ### Custom config
 add `.env` file with
 ```
-REACT_APP_MAPBOX_API_TOKEN=xxxxxxxxxxxxxxx
 PRODUCTION_SERVER_URL=https://five.epicollect.net
 DEVELOPMENT_SERVER_URL=http://localhost/whatever
 ```
