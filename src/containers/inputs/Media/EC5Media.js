@@ -36,22 +36,22 @@ class EC5Media extends Component {
                 //size too big?
                 switch (input.type) {
                     case parameters.AUDIO:
-                        //max 100MB
-                        if (file.size > 100000000) {
+                        //max 10MB
+                        if (file.size > 10000000) {
                             showToastError(this.container, statusCodes.ec5_206);
                             return;
                         }
                         break;
                     case parameters.VIDEO:
-                        //max 500MB
-                        if (file.size > 500000000) {
+                        //max 25MB
+                        if (file.size > 25000000) {
                             showToastError(this.container, statusCodes.ec5_206);
                             return;
                         }
                         break;
                     default:
-                        //default is photo type, max 10MB
-                        if (file.size > 10000000) {
+                        //default is photo type, max 5MB
+                        if (file.size > 500000) {
                             showToastError(this.container, statusCodes.ec5_206);
                             return;
                         }
@@ -157,8 +157,8 @@ class EC5Media extends Component {
 
                     />);
                 mimeTypes = 'audio/mp4,audio/wav,video/mp4';
-                maxSize = 100 * 1000 * 1000;//bytes
-                acceptedFormats = 'mp4 or wav only, max file size 100 MB';
+                maxSize = 10 * 1000 * 1000;//bytes
+                acceptedFormats = 'mp4 or wav only, max file size 10 MB';
                 break;
             case 'video':
                 format = 'video';
@@ -173,8 +173,8 @@ class EC5Media extends Component {
                         src={fileSource}
                     />);
                 mimeTypes = 'video/mp4';
-                maxSize = 500000000;//bytes
-                acceptedFormats = 'mp4 only, max file size 500 MB';
+                maxSize = 25000000;//bytes
+                acceptedFormats = 'mp4 only, max file size 25 MB';
                 break;
             default:
                 format = 'entry_original';
@@ -187,19 +187,9 @@ class EC5Media extends Component {
                         alt={this.props.answer}
                         src={fileSource}
                     />);
-                // htmlComponent = (
-                //     <EC5Photo
-                //         project={project}
-                //         files={this.state.files}
-                //         answer={answer}
-                //         input={input}
-                //         uuid={uuid}
-                //         network={network}
-                //     />
-                // );
                 mimeTypes = 'image/jpeg, image/jpg, image/png, image/gif';
-                maxSize = 10000000;//bytes
-                acceptedFormats = 'jpeg or png only, max file size 10 MB, max resolution 4096 x 4096px';
+                maxSize = 5000000;//bytes
+                acceptedFormats = 'jpeg or png only, max file size 5 MB, max resolution 4096 x 4096px';
         }
 
         return (
