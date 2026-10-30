@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "node ./server.js",
+    "start": "bash -c 'source \"$HOME/.nvm/nvm.sh\" 2>/dev/null; nvm use 18 >/dev/null 2>&1; node ./server.js'",
     "test": "jest",
     "test:watch": "npm test -- --watch",
-    "build": "NODE_ENV=production webpack -p --progress",
-    "debug": "NODE_ENV=production webpack --progress"
+    "build": "bash -c 'source \"$HOME/.nvm/nvm.sh\" 2>/dev/null; nvm use 18 >/dev/null 2>&1; NODE_ENV=production webpack -p --progress'",
+    "debug": "bash -c 'source \"$HOME/.nvm/nvm.sh\" 2>/dev/null; nvm use 18 >/dev/null 2>&1; NODE_ENV=production webpack --progress'"
+  },
+  "engines": {
+    "node": "18.x"
   },
   "author": "Antonio Puleo",
   "license": "MIT",

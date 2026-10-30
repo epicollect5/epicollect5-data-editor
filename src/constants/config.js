@@ -44,11 +44,11 @@ const config = {
         'SRTM | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)',
 
     //carto
-    CARTO_LIGHT_TILES_PROVIDER: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
+    CARTO_LIGHT_TILES_PROVIDER: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png?key=' + process.env.REACT_APP_CARTO_API_KEY,
     CARTO_TILES_ATTRIBUTION: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>',
 
     CARTO_DARK_TILES_PROVIDER:
-        'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png',
+        'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png?key=' + process.env.REACT_APP_CARTO_API_KEY,
 
     CARTO_DARK_TILES_ATTRIBUTION:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, ' +
